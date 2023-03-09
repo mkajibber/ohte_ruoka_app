@@ -3,7 +3,7 @@ from tkinter import Tk, ttk, constants
 
 
 
-class CreateUser:
+class CreateUserView:
     def __init__(self, root):
         self._root = root
         self._name_label = None
@@ -47,7 +47,7 @@ class CreateUser:
 
         self._button = ttk.Button(
             master=self._root,
-            text="Button",
+            text="Create user",
             command=self._handle_button_click
         )
 
@@ -60,7 +60,7 @@ class CreateUser:
         # asettelu
         self._heading_label.grid(row=0, column=0, columnspan=2, sticky=constants.W, padx=5, pady=5)
         self._name_label.grid(row=1, column=0, padx=5, pady=5)
-        self._name_entry.grid(row=1, column=0, padx=5, pady=5, sticky=(constants.E, constants.W))
+        self._name_entry.grid(row=1, column=1, padx=5, pady=5, sticky=(constants.E, constants.W))
         self._username_label.grid(row=2, column=0, padx=5, pady=5)
         self._username_entry.grid(row=2, column=1, sticky=(constants.E, constants.W), padx=5, pady=5)
         self._password_label.grid(row=3, column=0, padx=5, pady=5)
@@ -76,7 +76,7 @@ class CreateUser:
 
 
 
-class Login:
+class LoginView:
     def __init__(self, root):
         self._root = root
         self._username_label = None
@@ -157,29 +157,3 @@ class Login:
 
         # toisen kolumnin venyttäminen horisontaalisti minimileveyteen
         self._root.grid_columnconfigure(1, weight=1, minsize=300)
-
-
-
-
-
-
-
-
-if __name__ == "__main__":
-
-    INTERFACE_TO_PLAY_WITH = "create_user"
-
-    window = Tk()
-    window.title("Harjoitustyö, OhTe k23")
-
-    login_interface = Login(window)
-    create_user_interface = CreateUser(window)
-
-    interfaces = {
-        "login": login_interface,
-        "create_user": create_user_interface
-    }
-
-    interfaces[INTERFACE_TO_PLAY_WITH].start()
-
-    window.mainloop()
